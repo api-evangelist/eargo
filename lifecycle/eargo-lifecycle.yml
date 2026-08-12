@@ -1,0 +1,93 @@
+generated: '2026-08-12'
+method: searched
+source: https://www.eargo.com/
+summary: >-
+  Eargo publishes no API versioning policy, no deprecation policy, no SLA and no status
+  page — it never operated a developer program. What it does publish is a corporate
+  end-of-life notice: parent company LXE Hearing (formed by the 2025 merger of Eargo and
+  hearX Group) began winding down its US operations in 2026, and eargo.com has been
+  reduced to that single notice page. This artifact records the product/company
+  lifecycle, not an API lifecycle.
+api_lifecycle:
+  versioning_policy: null
+  deprecation_policy: null
+  sunset_headers: null
+  sla: null
+  status_page: null
+  note: >-
+    No public API, therefore no API lifecycle policy of any kind. No StatusPage or
+    Deprecation pointer is emitted.
+company_lifecycle:
+  state: winding-down
+  parent: LXE Hearing
+  parent_url: https://lxehearing.com/
+  formed: >-
+    2025 merger of Eargo, Inc. (Nasdaq: EAR, founded 2010 as Aria Innovations) with
+    hearX Group, creating LXE Hearing and its Eargo, Lexie Hearing and Go Hearing brands.
+  events:
+  - date: '2026'
+    event: wind-down-announced
+    detail: >-
+      "Our parent company, LXE Hearing, has begun a wind-down of its US operations."
+      Announced on the eargo.com homepage after restructuring and strategic-transaction
+      efforts failed.
+    source: https://www.eargo.com/
+  - date: '2026-09-15'
+    event: support-and-warranty-cutoff
+    detail: >-
+      Customer service, eligible refunds and active warranty claims are supported through
+      September 15, 2026. Warranty administration, replacement parts and app updates
+      beyond that date are explicitly not guaranteed.
+    source: https://www.eargo.com/
+  - date: '2026'
+    event: web-presence-reduced
+    detail: >-
+      Every path on the www.eargo.com marketing host other than the homepage now serves
+      a 948-byte JavaScript redirect shell back to "/" — no support page, privacy policy,
+      terms, blog or careers page remains reachable there. The retired storefront
+      shop.eargo.com 301s wholesale to www.eargo.com, store.eargo.com and admin.eargo.com
+      still resolve in DNS but complete no TLS connection, and blog.eargo.com no longer
+      resolves at all.
+    source: https://www.eargo.com/
+    corrected: '2026-08-12'
+    correction_note: >-
+      A prior pass recorded this as "no support page remains reachable" full stop. That
+      overstated it — round two enumerated eargo.com by DNS and found two hosts still
+      serving real content on separate infrastructure (see surviving_hosts below).
+  surviving_hosts:
+  - host: https://help.eargo.com/
+    state: live
+    detail: >-
+      Intercom-hosted consumer help center, HTTP 200 with ~70KB of real markup and 106
+      published support articles indexed by its own llms.txt. This is where Eargo's
+      remaining customer-facing documentation actually lives.
+    llms_txt: https://help.eargo.com/llms.txt
+  - host: https://app.eargo.com/
+    state: live
+    detail: >-
+      "Eargo Web App" — a Ruby on Rails application behind Apache 2.4.56 /
+      Phusion Passenger 6.0.17, serving the MyAccount and checkout surface. Its
+      robots.txt still disallows /checkout, /cart, /orders, /account, /trial,
+      /user_sessions and /user_registrations, so the commerce surface is still wired.
+      It is a web application, not a documented API, and exposes no spec.support
+  consumer_app:
+    name: Eargo mobile application
+    state: operating
+    detail: >-
+      Stated to "continue operating as normal" during the transition, backed by the
+      private api.eargo.com host. Long-term availability is not guaranteed.
+  support_contacts:
+  - email: support@eargo.com
+  - phone: 1-615-299-5632
+    hours: Mon-Fri 8am-8pm CT, Sat 8am-5pm CT
+x-evidence:
+- url: https://www.eargo.com/
+  status: 200
+  fetched: '2026-08-12'
+- url: https://www.eargo.com/support
+  status: 200
+  note: 948-byte redirect shell, not a support page
+  fetched: '2026-08-12'
+- url: https://lxehearing.com/
+  status: 200
+  fetched: '2026-08-12'

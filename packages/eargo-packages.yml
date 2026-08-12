@@ -1,0 +1,65 @@
+generated: '2026-08-12'
+method: searched
+source: >-
+  registry.npmjs.org search + package metadata; pypi.org; api.github.com org/repo lookups
+summary: >-
+  Eargo publishes no client SDK on any public registry. A single Eargo-named package
+  exists on npm — a React UI component library, not an API client — published in 2020 by
+  an outside contractor account (richa@repozitory.com) against a GitHub repository that
+  no longer resolves. It is recorded here for completeness and marked official: false
+  because first-party ownership could not be verified. No `SDKs` pointer is emitted.
+packages:
+- language: javascript
+  registry: npm
+  name: eargo-ui-components
+  url: https://www.npmjs.com/package/eargo-ui-components
+  install: npm install eargo-ui-components
+  official: false
+  kind: ui-components
+  version: 1.1.2
+  published: '2020-04-02'
+  repository: https://github.com/Aria-Innovations/eargo-components
+  note: >-
+    "Eargo UI Components". Published under Eargo's original corporate name, Aria
+    Innovations, but by a third-party contractor npm account; the linked GitHub repo
+    returns 404 while the Aria-Innovations org itself returns 200. Last release
+    2020-04-02 — six years stale and predating both the hearX merger and the wind-down.
+    It is a front-end component library, not an API client.
+registries_checked:
+- registry: npm
+  query: eargo
+  result: 1 Eargo-named package (above); no API client library
+- registry: pypi
+  query: eargo
+  result: 404 — no package
+- registry: rubygems
+  query: eargo
+  result: no package
+- registry: crates.io
+  query: eargo
+  result: no package
+- registry: nuget
+  query: eargo
+  result: no package
+- registry: maven-central
+  query: eargo
+  result: no artifact
+- registry: pkg.go.dev
+  query: eargo
+  result: no module
+github:
+  orgs_probed:
+  - url: https://api.github.com/orgs/eargo
+    status: 404
+  - url: https://api.github.com/orgs/eargo-inc
+    status: 404
+  - url: https://api.github.com/orgs/lxehearing
+    status: 404
+  - url: https://api.github.com/orgs/hearx
+    status: 404
+  - url: https://api.github.com/orgs/Aria-Innovations
+    status: 200
+    note: >-
+      Legacy org under Eargo's founding name; the eargo-components repo it once hosted
+      returns 404, so no public source is reachable.
+official_sdk_count: 0

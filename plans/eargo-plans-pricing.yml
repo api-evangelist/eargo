@@ -1,0 +1,21 @@
+generated: '2026-08-12'
+method: searched
+source: https://www.eargo.com/
+summary: >-
+  Eargo publishes no API plans or developer pricing — it never ran a developer program.
+  Its historical pricing was consumer hardware pricing (a one-time device purchase with
+  financing), and even that is gone: the eargo.com storefront has been taken down as part
+  of the LXE Hearing US wind-down, and every product/pricing path now serves a
+  948-byte JavaScript redirect shell back to the homepage.
+plan_count: 0
+plans: []
+pricing_model: none-published
+x-evidence:
+- url: https://www.eargo.com/
+  status: 200
+  note: single wind-down notice page; no pricing
+  fetched: '2026-08-12'
+- url: https://www.eargo.com/pages/privacy-policy
+  status: 200
+  note: 948-byte redirect shell — storefront paths no longer resolve
+  fetched: '2026-08-12'

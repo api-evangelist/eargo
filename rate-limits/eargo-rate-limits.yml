@@ -1,0 +1,28 @@
+generated: '2026-08-12'
+method: probed
+source: >-
+  live HTTP probes of https://api.eargo.com and https://www.eargo.com; no developer
+  documentation exists to search
+summary: >-
+  No rate limits are documented, because Eargo publishes no API documentation. The only
+  API host, api.eargo.com, is the private backend for the Eargo consumer mobile
+  application; it sits behind a Cloudflare bot-management challenge that answers HTTP 403
+  with a "Just a moment" interstitial to anonymous clients, so no RateLimit-* or
+  X-RateLimit-* response headers could be observed either.
+limit_count: 0
+limits: []
+headers_observed: []
+exhaustion_status: null
+x-evidence:
+- url: https://api.eargo.com/
+  status: 403
+  note: Cloudflare challenge interstitial
+  fetched: '2026-08-12'
+- url: https://api.eargo.com/openapi.json
+  status: 403
+  note: challenge, not a spec
+  fetched: '2026-08-12'
+- url: https://developer.eargo.com/
+  status: 0
+  note: DNS does not resolve
+  fetched: '2026-08-12'

@@ -1,0 +1,141 @@
+generated: '2026-08-12'
+method: probed
+source: >-
+  live GET of /.well-known/* on every Eargo host resolved from DNS enumeration of
+  eargo.com plus the parent-company host lxehearing.com
+summary: >-
+  Eargo itself serves no .well-known document it authored. Round two enumerated four
+  hosts the first pass had missed — app.eargo.com (a live Rails "Eargo Web App"),
+  help.eargo.com (an Intercom-hosted consumer help center), shop.eargo.com and
+  store.eargo.com — and probed all of them. The only HTTP 200 carrying a real document
+  is https://help.eargo.com/.well-known/security.txt, and it is NOT Eargo's: it is
+  Intercom's platform-default RFC 9116 file, served by the help-center vendor, whose own
+  `Canonical:` field points at https://app.intercom.com/.well-known/security.txt and
+  whose Contact/Policy route to bugcrowd.com/intercom. Because that document makes no
+  claim about Eargo and Eargo did not author it, NO SecurityTxt and NO Security pointer
+  is emitted, and no WellKnown pointer either — crediting Eargo with a vendor's
+  disclosure program would be exactly the soft-credit failure this probe exists to
+  prevent. Every other 200 in this file is an SPA/soft-404 catch-all shell, and
+  api.eargo.com answers 403 on every path behind Cloudflare bot management.
+hosts:
+- host: https://www.eargo.com
+  role: corporate website (wind-down notice)
+  note: >-
+    soft-404 SPA catch-all — every 200 below is a 948-byte Next.js redirect shell
+    (title "Redirecting to Eargo…"), not a document
+  documents:
+  - {path: /.well-known/security.txt, status: 200, content_type: text/html, document: false}
+  - {path: /.well-known/openid-configuration, status: 200, content_type: text/html, document: false}
+  - {path: /.well-known/oauth-authorization-server, status: 200, content_type: text/html, document: false}
+  - {path: /.well-known/api-catalog, status: 200, content_type: text/html, document: false}
+  - {path: /.well-known/ai-plugin.json, status: 200, content_type: text/html, document: false}
+  - {path: /.well-known/agent-card.json, status: 200, content_type: text/html, document: false}
+  - {path: /.well-known/agent.json, status: 200, content_type: text/html, document: false}
+  - {path: /llms.txt, status: 200, content_type: text/html, document: false}
+- host: https://api.eargo.com
+  role: private consumer mobile-application backend
+  note: >-
+    Cloudflare bot challenge on every path (403 "Just a moment" interstitial); no
+    anonymous read possible
+  documents:
+  - {path: /.well-known/security.txt, status: 403, content_type: text/html, document: false}
+  - {path: /.well-known/openid-configuration, status: 403, content_type: text/html, document: false}
+  - {path: /.well-known/oauth-authorization-server, status: 403, content_type: text/html, document: false}
+  - {path: /.well-known/api-catalog, status: 403, content_type: text/html, document: false}
+  - {path: /.well-known/ai-plugin.json, status: 403, content_type: text/html, document: false}
+  - {path: /.well-known/agent-card.json, status: 403, content_type: text/html, document: false}
+  - {path: /.well-known/agent.json, status: 403, content_type: text/html, document: false}
+- host: https://app.eargo.com
+  role: >-
+    live "Eargo Web App" — a Ruby on Rails / Phusion Passenger 6.0.17 storefront and
+    MyAccount application (server header observed), the only Eargo web application still
+    serving real markup
+  note: >-
+    Rails responds 406 Not Acceptable ({"status":406,"error":"Not Acceptable"}) to
+    .json paths and returns the 1,816-byte app shell for extensionless paths — a
+    catch-all, not a document
+  documents:
+  - {path: /.well-known/security.txt, status: 406, content_type: text/html, document: false}
+  - {path: /.well-known/openid-configuration, status: 200, content_type: text/html, document: false}
+  - {path: /.well-known/oauth-authorization-server, status: 200, content_type: text/html, document: false}
+  - {path: /.well-known/api-catalog, status: 200, content_type: text/html, document: false}
+  - {path: /.well-known/ai-plugin.json, status: 406, content_type: application/json, document: false}
+  - {path: /.well-known/agent-card.json, status: 406, content_type: application/json, document: false}
+  - {path: /.well-known/agent.json, status: 406, content_type: application/json, document: false}
+  - {path: /llms.txt, status: 406, content_type: text/html, document: false}
+  - {path: /robots.txt, status: 200, content_type: text/plain, document: true}
+- host: https://help.eargo.com
+  role: consumer help center, hosted by Intercom (Next.js front end)
+  documents:
+  - path: /.well-known/security.txt
+    status: 200
+    content_type: text/plain
+    document: true
+    authored_by: Intercom
+    attributable_to_eargo: false
+    canonical: https://app.intercom.com/.well-known/security.txt
+    note: >-
+      Real RFC 9116 document, but the vendor's, not Eargo's. Contact:
+      https://bugcrowd.com/intercom and mailto:security@intercom.com; Policy:
+      https://www.bugcrowd.com/resource/standard-disclosure-terms/; Expires:
+      2029-03-15. The Canonical field explicitly disclaims this host. Not saved as
+      eargo-security.txt and not wired to any pointer.
+  - path: /llms.txt
+    status: 200
+    content_type: text/plain
+    document: true
+    authored_by: Eargo (generated by the Intercom help-center platform)
+    attributable_to_eargo: true
+    file: ../llms/eargo-llms.txt
+    note: >-
+      16,602-byte llms.txt indexing 106 lines of Eargo product-support articles across
+      12 sections. Saved verbatim; wired as type LLMsTxt.
+  - {path: /.well-known/openid-configuration, status: 404, content_type: text/html, document: false}
+  - {path: /.well-known/oauth-authorization-server, status: 404, content_type: text/html, document: false}
+  - {path: /.well-known/api-catalog, status: 404, content_type: text/html, document: false}
+  - {path: /.well-known/ai-plugin.json, status: 404, content_type: text/html, document: false}
+  - {path: /.well-known/agent-card.json, status: 404, content_type: text/html, document: false}
+  - {path: /.well-known/agent.json, status: 404, content_type: text/html, document: false}
+- host: https://shop.eargo.com
+  role: retired storefront
+  note: 301 redirects every path (including /.well-known/*) to https://www.eargo.com/
+  documents:
+  - {path: /.well-known/security.txt, status: 301, document: false}
+  - {path: /.well-known/agent-card.json, status: 301, document: false}
+- host: https://store.eargo.com
+  role: retired storefront (CloudFront distribution)
+  note: DNS resolves to d1g2pfn4bz9m4k.cloudfront.net but no TLS connection completes (curl 000)
+  documents:
+  - {path: /, status: 0, document: false}
+- host: https://admin.eargo.com
+  role: internal admin host
+  note: DNS resolves to 54.241.90.199 but no TLS connection completes (curl 000)
+  documents:
+  - {path: /, status: 0, document: false}
+- host: https://lxehearing.com
+  role: parent company
+  note: >-
+    answers HTTP 200 with an identical 227-byte body for /llms.txt,
+    /.well-known/security.txt and /privacy-policy — a soft-404 catch-all, not documents
+  documents:
+  - {path: /.well-known/security.txt, status: 200, content_type: text/html, document: false}
+  - {path: /llms.txt, status: 200, content_type: text/html, document: false}
+hosts_enumerated_via_dns:
+- {host: api.eargo.com, resolves: true, cdn: cloudflare}
+- {host: www.eargo.com, resolves: true, cdn: cloudfront}
+- {host: shop.eargo.com, resolves: true, cdn: cloudflare}
+- {host: app.eargo.com, resolves: true, ip: 54.153.123.244}
+- {host: store.eargo.com, resolves: true, cdn: cloudfront}
+- {host: admin.eargo.com, resolves: true, ip: 54.241.90.199}
+- {host: help.eargo.com, resolves: true, source: schema.org sameAs on app.eargo.com}
+- {host: blog.eargo.com, resolves: false, source: schema.org sameAs on app.eargo.com}
+- {host: developer.eargo.com, resolves: false}
+- {host: docs.eargo.com, resolves: false}
+documents_found: 2
+documents_attributable_to_eargo: 1
+pointers_emitted: [LLMsTxt]
+pointers_withheld:
+- {type: WellKnown, reason: no Eargo-authored .well-known document on any host}
+- {type: SecurityTxt, reason: the only served security.txt is Intercom's, canonical at app.intercom.com}
+- {type: Security, reason: no Eargo vulnerability-disclosure program found}
+- {type: AgentCard, reason: every agent-card.json path returned 200-HTML, 403, 404 or 406 — no card}
