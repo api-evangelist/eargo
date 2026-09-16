@@ -1,16 +1,13 @@
 aid: eargo
 name: Eargo
-description: 'Eargo was a San Jose, California direct-to-consumer medical device company
-  that designed and sold rechargeable, virtually invisible in-canal hearing aids for
-  adults with mild to moderate hearing loss, founded in 2010 as Aria Innovations and
-  listed on Nasdaq in 2020. In 2025 Eargo merged with South Africa''s hearX Group to
-  form LXE Hearing, combining Eargo''s direct-to-consumer platform with the Lexie and
-  Go Hearing over-the-counter brands. In 2026 LXE Hearing began winding down its US
-  operations after restructuring efforts failed, and the eargo.com website has been
-  reduced to a single wind-down notice page. Eargo never operated a public developer
-  program, developer portal, or documented API: the hearing aids paired with a
-  consumer mobile application backed by a private, undocumented service host at
-  api.eargo.com.'
+description: 'Eargo was a San Jose, California direct-to-consumer medical device company that designed
+  and sold rechargeable, virtually invisible in-canal hearing aids for adults with mild to moderate hearing
+  loss, founded in 2010 as Aria Innovations and listed on Nasdaq in 2020. In 2025 Eargo merged with South
+  Africa''s hearX Group to form LXE Hearing, combining Eargo''s direct-to-consumer platform with the Lexie
+  and Go Hearing over-the-counter brands. In 2026 LXE Hearing began winding down its US operations after
+  restructuring efforts failed, and the eargo.com website has been reduced to a single wind-down notice
+  page. Eargo never operated a public developer program, developer portal, or documented API: the hearing
+  aids paired with a consumer mobile application backed by a private, undocumented service host at api.eargo.com.'
 url: https://raw.githubusercontent.com/api-evangelist/eargo/refs/heads/main/apis.yml
 deliveryModel:
   model: saas
@@ -43,7 +40,7 @@ x-tier: stub
 x-tier-reason: harvest
 specificationVersion: '0.23'
 created: '2026-08-12'
-modified: '2026-08-12'
+modified: '2026-09-15'
 tags:
 - Company
 - Hearing Aids
@@ -88,13 +85,11 @@ x-enrichment:
 x-coverage:
   state: none
   reason: defunct
-  detail: >-
-    Round two enumerated eargo.com by DNS and found four hosts the first pass missed —
-    app.eargo.com still serves a live Rails "Eargo Web App" storefront and
-    help.eargo.com serves a real 16.6KB llms.txt of 106 consumer support articles — but
-    there is still no API anywhere: api.eargo.com answers 403 on /openapi.json,
-    /swagger.json, /api-docs and /graphql behind a Cloudflare bot challenge, and every
-    other host is a soft-404 shell or an unreachable retired storefront.
+  detail: 'Round two enumerated eargo.com by DNS and found four hosts the first pass missed — app.eargo.com
+    still serves a live Rails "Eargo Web App" storefront and help.eargo.com serves a real 16.6KB llms.txt
+    of 106 consumer support articles — but there is still no API anywhere: api.eargo.com answers 403 on
+    /openapi.json, /swagger.json, /api-docs and /graphql behind a Cloudflare bot challenge, and every
+    other host is a soft-404 shell or an unreachable retired storefront.'
   evidence:
   - url: https://help.eargo.com/llms.txt
     status: 200
@@ -115,3 +110,4 @@ x-coverage:
   - url: https://api.github.com/orgs/eargo
     status: 404
   checked: '2026-08-12'
+x-status: defunct
