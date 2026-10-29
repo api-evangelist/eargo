@@ -64,5 +64,56 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Eargo is a company surfaced via the API Evangelist harvest backlog (source: secondary-market) and added to the network as a stub for full-pipeline profiling.
-- https://forgeglobal.com/eargo_stock/
+> **No longer operating.** This company or product has shut down, been discontinued, or been deprecated. This profile is kept as a historical record and is not maintained or rated.
+
+Eargo was a San Jose, California direct-to-consumer medical device company that designed and sold rechargeable, virtually invisible in-canal hearing aids for adults with mild to moderate hearing loss, founded in 2010 as Aria Innovations and listed on Nasdaq in 2020. In 2025 Eargo merged with South Africa's hearX Group to form LXE Hearing, combining Eargo's direct-to-consumer platform with the Lexie and Go Hearing over-the-counter brands. In 2026 LXE Hearing began winding down its US operations after restructuring efforts failed, and the eargo.com website has been reduced to a single wind-down notice page. Eargo never operated a public developer program, developer portal, or documented API: the hearing aids paired with a consumer mobile application backed by a private, undocumented service host at api.eargo.com.
+
+**Areas:** Company · Hearing Aids · Medical Devices · Consumer Health · Direct to Consumer · Hearing Health · Digital Health · Defunct
+
+## Eargo on APIs.io (historical record)
+
+Everything profiled for Eargo is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/eargo/](https://apis.io/providers/eargo/)** — or go straight to one of the APIs or properties below.
+
+### Published properties
+
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
+
+#### Security (1)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Eargo Domain Security](https://apis.io/security/eargo/eargo-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Eargo Plans Pricing](https://apis.io/plans/eargo/eargo-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Eargo Rate Limits](https://apis.io/rate-limits/eargo/eargo-rate-limits/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.eargo.com/)
+
+## API Evangelist rating
+
+**Not rated** — this company is recorded as no longer operating, so no score is published. If it is in fact operating, say so on this repository and it will be re-profiled.
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Eargo: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/eargo/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
